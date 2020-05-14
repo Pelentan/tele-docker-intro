@@ -1,4 +1,4 @@
-FROM python:3.8.0-buster
+FROM python:3.8.2-buster
 ENV TZ=America/New_York
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone  
 RUN apt-get update -qq && apt-get install -qy \ 

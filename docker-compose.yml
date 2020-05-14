@@ -8,13 +8,14 @@ x-default-opts:
 
 services:
     cicd-python:
-        container_name: python-practice
-        image: cicd_python:active
-        build:
-            context: .
-            dockerfile: .docker/python.dockerfile
-        volumes:
-          - ./src:/src
+      <<: *default-opts
+      container_name: python-practice
+      image: cicd_python:active
+      build:
+          context: .
+          dockerfile: .docker/python.dockerfile
+      volumes:
+        - ./src:/src
 
     nginx-fun:
       <<: *default-opts
