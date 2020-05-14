@@ -1,0 +1,43 @@
+version: '3.7'
+
+x-default-opts: 
+  &default-opts
+  logging:
+    options:
+      max-size: "1m" 
+
+services:
+    cicd-python:
+        container_name: python-practice
+        image: cicd_python:active
+        build:
+            context: .
+            dockerfile: .docker/python.dockerfile
+        volumes:
+          - ./src:/src
+
+    nginx-fun:
+      <<: *default-opts
+      image: nginx:dev
+      container_name: nginx_fun
+      build:
+        context: .
+        dockerfile: .docker/nginx.dockerfile
+      volumes: 
+        - ./web/site-confs:/etc/nginx/conf.d
+        - ./web/sites:/var/www/html
+      ports:        
+        - target: 80
+          published: 80
+          protocol: tcp
+          mode: host
+        - target: 443
+          published: 443
+          protocol: tcp
+          mode: host
+      networks:
+        - nginx   
+
+networks:
+    nginx:
+      external: false
