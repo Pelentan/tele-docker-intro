@@ -33,7 +33,7 @@ def main():
     '''Runs the CountUpdater class'''
     count_updater = CountUpdater()
     count = count_updater.get_count()
-    count = count + -3
+    count = count + 1
     count_updater.set_count(count=count)
 
 if __name__ == '__main__':

@@ -1,5 +1,5 @@
 #!/bin/sh
-# set -eo pipefail
+set -euf pipefail
 
 PYTHON_SCRIPT=my_python.py
 python "$PYTHON_SCRIPT"
